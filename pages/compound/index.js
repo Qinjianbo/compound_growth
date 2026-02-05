@@ -53,6 +53,7 @@ Page({
   schedule: null,
 
   data: {
+    buildTag: "2026-02-05 15:30",
     principalText: "10000",
     monthlyText: "1000",
     annualRateText: "3.5",

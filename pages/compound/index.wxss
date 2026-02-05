@@ -1,14 +1,17 @@
 page {
   background: #f6f7f9;
-  height: 100%;
   min-height: 100vh;
 }
 
 
 
-.container {
-  padding-top: calc(44px + env(safe-area-inset-top));
-  height: 100%;
+.compound-container {
+  height: 100vh;
+}
+
+.compound-scroll {
+  height: calc(100vh - 44px - env(safe-area-inset-top));
+  margin-top: calc(44px + env(safe-area-inset-top));
 }
 
 .content {
@@ -28,6 +31,31 @@ page {
   font-size: 32rpx;
   font-weight: 700;
   margin-bottom: 16rpx;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12rpx;
+}
+
+.build-tag-inline {
+  font-size: 22rpx;
+  color: #9ca3af;
+}
+
+.build-banner {
+  position: fixed;
+  top: calc(44px + env(safe-area-inset-top));
+  left: 16rpx;
+  z-index: 1000;
+  font-size: 22rpx;
+  color: #9ca3af;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 6rpx 10rpx;
+  border-radius: 10rpx;
+  pointer-events: none;
 }
 
 .field {
@@ -251,4 +279,11 @@ page {
 .td.year {
   flex: 0 0 90rpx;
   text-align: center;
+}
+
+.build-tag {
+  margin: 16rpx 8rpx 40rpx;
+  font-size: 22rpx;
+  color: #9ca3af;
+  text-align: right;
 }

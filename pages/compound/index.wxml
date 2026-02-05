@@ -1,9 +1,14 @@
 <navigation-bar title="复利计算器" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="build-banner">Build: {{buildTag}}</view>
 
-<view class="container">
-  <view class="content">
+<view class="compound-container">
+  <scroll-view class="compound-scroll" scroll-y>
+    <view class="content">
   <view class="card">
-    <view class="card-title">输入参数</view>
+    <view class="card-title-row">
+      <view class="card-title">输入参数</view>
+      <view class="build-tag-inline">{{buildTag}}</view>
+    </view>
 
     <view class="field">
       <view class="label">初始金额（元）</view>
@@ -144,6 +149,7 @@
         <view class="td">{{item.totalInterestText}}</view>
       </view>
     </view>
-  </view>
-  </view>
+    </view>
+    </view>
+  </scroll-view>
 </view>
