@@ -22,7 +22,7 @@
     </view>
 
     <view class="field">
-      <view class="label">每月定存金额（元）</view>
+      <view class="label">每年定存金额（元）</view>
       <input
         class="input"
         type="digit"
@@ -43,7 +43,7 @@
       />
     </view>
 
-    <view class="hint">按“每月月底定存、按月复利”计算。</view>
+    <view class="hint">按“每年年底定存、按年复利”计算。</view>
 
     <view class="actions">
       <button class="primary" bindtap="calculate">计算</button>

@@ -14,8 +14,7 @@ function formatMoney(value) {
   return `${parts[0]}.${parts[1]}`
 }
 
-function computeYearlySchedule({ principal, monthly, annualRate, years }) {
-  const monthlyRate = annualRate / 12
+function computeYearlySchedule({ principal, yearly, annualRate, years }) {
   let balance = principal
   let totalContribution = principal
   let totalInterest = 0
@@ -30,13 +29,11 @@ function computeYearlySchedule({ principal, monthly, annualRate, years }) {
   ]
 
   for (let year = 1; year <= years; year += 1) {
-    for (let m = 0; m < 12; m += 1) {
-      const interest = balance * monthlyRate
-      totalInterest += interest
-      balance += interest
-      balance += monthly
-      totalContribution += monthly
-    }
+    const interest = balance * annualRate
+    totalInterest += interest
+    balance += interest
+    balance += yearly
+    totalContribution += yearly
 
     rows.push({
       year,
@@ -117,15 +114,15 @@ Page({
 
   calculate() {
     const principal = parseMoney(this.data.principalText)
-    const monthly = parseMoney(this.data.monthlyText)
+    const yearly = parseMoney(this.data.monthlyText)
     const annualRatePercent = parseMoney(this.data.annualRateText)
 
     if (!Number.isFinite(principal) || principal < 0) {
       this.setData({ errorText: "请填写有效的初始金额（>= 0）", hasResult: false })
       return
     }
-    if (!Number.isFinite(monthly) || monthly < 0) {
-      this.setData({ errorText: "请填写有效的每月定存金额（>= 0）", hasResult: false })
+    if (!Number.isFinite(yearly) || yearly < 0) {
+      this.setData({ errorText: "请填写有效的每年定存金额（>= 0）", hasResult: false })
       return
     }
     if (!Number.isFinite(annualRatePercent) || annualRatePercent < 0) {
@@ -136,7 +133,7 @@ Page({
     const annualRate = annualRatePercent / 100
     const schedule = computeYearlySchedule({
       principal,
-      monthly,
+      yearly,
       annualRate,
       years: 30,
     })
