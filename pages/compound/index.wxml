@@ -1,6 +1,4 @@
 <navigation-bar title="复利计算器" back="{{true}}" color="black" background="#FFF"></navigation-bar>
-<view class="build-banner">Build: {{buildTag}}</view>
-
 <view class="compound-container">
   <scroll-view class="compound-scroll" scroll-y>
     <view class="content">
@@ -149,7 +147,8 @@
         <view class="td">{{item.totalInterestText}}</view>
       </view>
     </view>
-    </view>
+  </view>
+  <view class="build-tag">Build: {{buildTag}}</view>
     </view>
   </scroll-view>
 </view>

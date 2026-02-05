@@ -1,8 +1,8 @@
 <!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="AI复利测算师Pro" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
-    <view class="title">Weixin</view>
+    <view class="title">AI复利测算师Pro</view>
     <button class="primary" bindtap="goCompound">复利计算器</button>
   </view>
 </scroll-view>

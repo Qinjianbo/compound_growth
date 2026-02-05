@@ -45,17 +45,11 @@ page {
   color: #9ca3af;
 }
 
-.build-banner {
-  position: fixed;
-  top: calc(44px + env(safe-area-inset-top));
-  left: 16rpx;
-  z-index: 1000;
+.build-tag {
+  margin: 16rpx 8rpx 40rpx;
   font-size: 22rpx;
   color: #9ca3af;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6rpx 10rpx;
-  border-radius: 10rpx;
-  pointer-events: none;
+  text-align: right;
 }
 
 .field {
