@@ -1,0 +1,23 @@
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# WeChat Mini Program
+dist/
+build/
+miniprogram_npm/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+project.private.config.json
+
+# Coverage
+coverage/

@@ -1,0 +1,149 @@
+<navigation-bar title="复利计算器" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="container">
+  <view class="content">
+  <view class="card">
+    <view class="card-title">输入参数</view>
+
+    <view class="field">
+      <view class="label">初始金额（元）</view>
+      <input
+        class="input"
+        type="digit"
+        value="{{principalText}}"
+        placeholder="例如：10000"
+        bindinput="onPrincipalInput"
+      />
+    </view>
+
+    <view class="field">
+      <view class="label">每月定存金额（元）</view>
+      <input
+        class="input"
+        type="digit"
+        value="{{monthlyText}}"
+        placeholder="例如：1000"
+        bindinput="onMonthlyInput"
+      />
+    </view>
+
+    <view class="field">
+      <view class="label">年化利率（%）</view>
+      <input
+        class="input"
+        type="digit"
+        value="{{annualRateText}}"
+        placeholder="例如：3.5"
+        bindinput="onAnnualRateInput"
+      />
+    </view>
+
+    <view class="hint">按“每月月底定存、按月复利”计算。</view>
+
+    <view class="actions">
+      <button class="primary" bindtap="calculate">计算</button>
+      <button class="ghost" bindtap="reset">重置</button>
+    </view>
+
+    <view wx:if="{{errorText}}" class="error">{{errorText}}</view>
+  </view>
+
+  <view wx:if="{{hasResult}}" class="card">
+    <view class="card-title">结果</view>
+    <view class="result-grid">
+      <view class="result-item">
+        <view class="result-k">10 年</view>
+        <view class="result-v">{{result10}}</view>
+      </view>
+      <view class="result-item">
+        <view class="result-k">20 年</view>
+        <view class="result-v">{{result20}}</view>
+      </view>
+      <view class="result-item">
+        <view class="result-k">30 年</view>
+        <view class="result-v">{{result30}}</view>
+      </view>
+    </view>
+    <view class="sub">总投入（30 年）：{{totalContribution30}}，累计利息：{{totalInterest30}}</view>
+  </view>
+
+  <view wx:if="{{hasResult}}" class="card sticky-chart">
+    <view class="card-title">复利曲线（按年）</view>
+    <view class="chart-wrap">
+      <view class="chart-layer">
+        <view
+          wx:for="{{chartGridLines}}"
+          wx:key="idx"
+          class="grid-line"
+          style="top: {{item.y}}px;"
+        ></view>
+        <view
+          class="axis-y"
+          style="left: {{chartPaddingLeft}}px; top: {{chartPaddingTop}}px; height: {{chartPlotH}}px;"
+        ></view>
+        <view
+          class="axis-x"
+          style="left: {{chartPaddingLeft}}px; top: {{chartPaddingTop + chartPlotH}}px; width: {{chartPlotW}}px;"
+        ></view>
+
+        <view
+          wx:for="{{chartYLabels}}"
+          wx:key="idx"
+          class="y-label"
+          style="top: {{item.y}}px; left: {{chartPaddingLeft - 6}}px;"
+        >{{item.text}}</view>
+        <view
+          wx:for="{{chartXLabels}}"
+          wx:key="idx"
+          class="x-label"
+          style="left: {{item.x}}px; top: {{chartPaddingTop + chartPlotH + 8}}px;"
+        >{{item.text}}</view>
+
+        <view
+          wx:for="{{chartSegmentsContrib}}"
+          wx:key="idx"
+          class="line-seg contrib"
+          style="left: {{item.x}}px; top: {{item.y}}px; width: {{item.len}}px; transform: rotate({{item.angle}}deg);"
+        ></view>
+        <view
+          wx:for="{{chartSegmentsBalance}}"
+          wx:key="idx"
+          class="line-seg balance"
+          style="left: {{item.x}}px; top: {{item.y}}px; width: {{item.len}}px; transform: rotate({{item.angle}}deg);"
+        ></view>
+
+        <view
+          wx:for="{{chartDots}}"
+          wx:key="idx"
+          class="dot-pt {{item.type}}"
+          style="left: {{item.x}}px; top: {{item.y}}px;"
+        ></view>
+      </view>
+    </view>
+    <view class="legend">
+      <view class="dot balance"></view>
+      <text class="legend-text">期末资产</text>
+      <view class="dot contrib"></view>
+      <text class="legend-text">累计投入</text>
+    </view>
+  </view>
+
+  <view wx:if="{{hasResult}}" class="card">
+    <view class="card-title">复利过程（按年汇总）</view>
+    <view class="table">
+      <view class="tr th">
+        <view class="td year">年</view>
+        <view class="td">期末资产</view>
+        <view class="td">累计投入</view>
+        <view class="td">累计利息</view>
+      </view>
+      <view wx:for="{{yearRows}}" wx:key="year" class="tr">
+        <view class="td year">{{item.year}}</view>
+        <view class="td">{{item.endBalanceText}}</view>
+        <view class="td">{{item.totalContributionText}}</view>
+        <view class="td">{{item.totalInterestText}}</view>
+      </view>
+    </view>
+  </view>
+  </view>
+</view>

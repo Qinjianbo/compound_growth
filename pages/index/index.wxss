@@ -1,0 +1,25 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  padding: 32rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 28rpx;
+}
+
+.primary {
+  background: #07c160;
+  color: #fff;
+}

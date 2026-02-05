@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="title">Weixin</view>
+    <button class="primary" bindtap="goCompound">复利计算器</button>
+  </view>
+</scroll-view>
